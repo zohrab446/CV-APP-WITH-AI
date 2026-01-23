@@ -5,10 +5,10 @@ import { OverallScore } from "@/components/OverallScore";
 import { ScoreCard } from "@/components/ScoreCard";
 import { AnalysisSection } from "@/components/AnalysisSection";
 import { OptimizedCVPreview } from "@/components/OptimizedCVPreview";
-import { mockAnalysis, mockOptimizedCV } from "@/data/mockAnalysis";
+import { analyzeCV } from "@/lib/cvAnalyzer";
 import { CVAnalysis, OptimizedCV } from "@/types/cv";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart3, FileCheck, Lightbulb } from "lucide-react";
+import { BarChart3, FileCheck } from "lucide-react";
 
 const Index = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -18,12 +18,13 @@ const Index = () => {
   const handleAnalyze = async (content: string) => {
     setIsAnalyzing(true);
     
-    // Simulate AI analysis
-    await new Promise((resolve) => setTimeout(resolve, 2500));
+    // Simulate processing time
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     
-    // In production, this would call an AI API
-    setAnalysis(mockAnalysis);
-    setOptimizedCV(mockOptimizedCV);
+    // Analyze the actual CV content
+    const { analysis: cvAnalysis, optimizedCV: cvOptimized } = analyzeCV(content);
+    setAnalysis(cvAnalysis);
+    setOptimizedCV(cvOptimized);
     setIsAnalyzing(false);
   };
 
