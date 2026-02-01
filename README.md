@@ -48,3 +48,4 @@ This project is built with:
 - Tailwind CSS
 
 
+![image alt](https://github.com/zohrab446/CV-APP-WITH-AI/blob/7e989a60da548af927d6ef901372e50b577bad16/Ekran%20Resmi%202026-02-01%2003.30.30.png)
